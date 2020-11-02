@@ -60,6 +60,58 @@ h1 {
 margin-top: 0;
 }
 
+.container .box {
+  position: absolute;
+  width: 100%;
+  height: 1000px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.container .box {
+  -webkit-animation-name: hideit;
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-delay: 5s;
+  -webkit-animation-iteration-count: 2.5;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes hideit {
+  0% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.angry-animate{
+-webkit-animation:bounce-in 5s ease 0s 1 normal;
+-moz-animation:bounce-in 5s ease 0s 1 normal;
+-ms-animation:bounce-in 5s ease 0s 1 normal;
+animation:bounce-in 5s ease 0s 1 normal;
+background-color: #24c6e3;
+position: absolute;
+left: 30%;
+top: 10%;
+transform: translate(-50%, -50%);
+width: 400px;
+height: 300px;
+border-radius:50px;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+}
+
+@-webkit-keyframes bounce-in {
+0%{ opacity: 0; -webkit-transform: scale(.3); transform: scale(.3); }
+50%{ opacity: 1; -webkit-transform: scale(1.0); transform: scale(1.0); }
+70%{ -webkit-transform: scale(0.9); transform: scale(0.9); }
+100%{ -webkit-transform: scale(1); transform: scale(1); }
+}
+
+@keyframes bounce-in {
+0%{ opacity: 0; transform: scale(.3); }
+50%{ opacity: 1; transform: scale(1.0); }
+70%{ transform: scale(0.9); }
+100%{ transform: scale(1); }
+}
 
 .image {
   background-color: #24c6e3;
@@ -106,6 +158,10 @@ background-color: #24c6e3;
 
 </head>
 <body>
+  <div class="container">
+  <div class="box"><div class="angry-animate"><img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:400x;height:300px;"></div>
+</div>
+</div>
   <div class="header"  align="center" style="width: 100%; height: 120px; float:middle;">
   <div class="image" align="right"> <img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:140px;height:100px;"></div>
 </div>
