@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0', shrink-to-fit=no">
+  <title>Glympse</title>
+
+  <script type="text/javascript"> <!--
+
+function addRow(){     var table = document.getElementById('results');
+var row = document.createElement('tr');
+var td1 = document.createElement('td');
+var td2 = document.createElement('td');
+var td3 = document.createElement('td');
+var td4 = document.createElement('td');
+td1.innerHTML = document.getElementById('phone').value;
+td2.innerHTML = document.getElementById('address').value;
+td3.innerHTML = document.getElementById('price').value;
+td4.innerHTML = document.getElementById('time').value;
+row.appendChild(td1);     row.appendChild(td2);     row.appendChild(td3); row.appendChild(td4);
+
+table.children[0].appendChild(row); }
+
+</script>
+<script type="text/javascript">
+
+var ray = {
+el:'', pause:0,
+
+updateText:function (el,pause) {
+this.el=this.el==''?el:this.el;
+this.pause=this.pause==0?pause:this.pause;
+this.getID(this.el).value = this.timeNow();
+setTimeout(function () {
+ray.updateText();
+},this.pause*(6000));
+},
+
+getID:function (el) {
+return document.getElementById(el);
+},
+
+timeNow:function () {
+var date = new Date();
+var hour = date.getHours();
+var min = date.getMinutes();
+var sec = date.getSeconds();
+return hour+':'+min+' '+sec;
+}
+}
+</script>
+
+<style>
+
+body {
+margin: 0;
+}
+
+h1 {
+margin-top: 0;
+}
+
+
+.image {
+  background-color: #24c6e3;
+  padding: 20px;
+}
+
+.header {
+  background-color: #24c6e3;
+  }
+
+.outorder {
+border:20px solid;
+border-color: #24c6e3;
+background-color: #24c6e3;
+}
+
+.orders {
+  border:2px solid;
+  border-color: black;
+  background-color: #e0e0eb;
+}
+
+.form {
+  border:2px solid;
+  margin: 0 .5% 0 2%;
+  border-color: white;
+  background-color: #24c6e3;
+  padding: 2%;
+}
+.window {
+  border:2px solid;
+  margin: 0 .5% 0 .5%;
+  border-color: white;
+  background-color: #24c6e3;
+  margin-right: 4%;
+
+}
+
+.lower {
+  background-color: #24c6e3;
+  }
+
+</style>
+
+</head>
+<body>
+  <div class="header"  align="center" style="width: 100%; height: 120px; float:middle;">
+  <div class="image" align="right"> <img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:140px;height:100px;"></div>
+</div>
+</div>
+  <div class="outorder"  height: 350px; >
+   <div class="orders" align="center" style="width: 100%; height: 250px; float:middle;">
+  <table id= "results" border="1" style="width: 100%">
+  <tr>
+  <th style="width:20%">Phone Number</th>
+  <th style="width:20%">Address</th>
+  <th style="width:20%">Price</th>
+  <th style="width:20%">Time</th>
+  </tr>
+  </table>
+</div>
+</div>
+<div class="lower" style="width: 100%; height: 500px;float:middle;">
+<div class="form" style="width: 25%; float:left;">
+  Phone Number:<br>
+  <input type="text" id="phone" /><br>
+  Address: <br>
+  <input type="text" id="address" /><br>
+  Price: <br>
+  <input type="text" id="price" /><br>
+  Time: <br>
+  <input type="text" id="time" /><br>
+  <input type="button" id ="display" value="Display" onclick="addRow()" /><br>
+</div>
+<div class="window" style="width: 60%; height: 400px; float:right;">
+<iframe src="https://glympse.com/01Q9-0N7D?utm_source=here-invite&utm_medium=email&utm_content=url-invite-main-wide&utm_campaign=invite" id="frame" width="100%" height="100%" title="Map"></iframe>
+<input type="text" id="box" value="Enter glympse code" />
+<button onClick="goTo();">go</button>
+</div>
+
+</div>
+
+
+<script>
+    function goTo() {
+        var input = get("box").value,
+            frame = get("frame");
+
+        if(input.match(/\bhttp(.)*/)) {
+            frame.src = input;
+        } else {
+            input = "https://glympse.com/" + input;
+            frame.src = input;
+        }
+    }
+
+    function get(id) {
+        return document.getElementById(id);
+    }
+</script>
+
+<script type="text/javascript">
+
+ray.updateText('time',1);
+</script>
+</body>
+</html>
