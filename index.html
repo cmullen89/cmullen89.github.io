@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0', shrink-to-fit=no">
-<title>Glympse</title>
-<script type="text/javascript"> <!--
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0', shrink-to-fit=no">
+  <title>Glympse</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+  <script type="text/javascript"> <!--
 
 function addRow(){     var table = document.getElementById('results');
 var row = document.createElement('tr');
@@ -21,11 +25,33 @@ row.appendChild(td1);     row.appendChild(td2);     row.appendChild(td3); row.ap
 table.children[0].appendChild(row); }
 
 </script>
+<script type="text/javascript">
 
+var ray = {
+el:'', pause:0,
 
+updateText:function (el,pause) {
+this.el=this.el==''?el:this.el;
+this.pause=this.pause==0?pause:this.pause;
+this.getID(this.el).value = this.timeNow();
+setTimeout(function () {
+ray.updateText();
+},this.pause*(1000));
+},
 
+getID:function (el) {
+return document.getElementById(el);
+},
 
-
+timeNow:function () {
+var date = new Date();
+var hour = date.getHours();
+var min = date.getMinutes();
+var sec = date.getSeconds();
+return hour+':'+min+' '+sec;
+}
+}
+</script>
 
 <style>
 
@@ -37,137 +63,190 @@ h1 {
 margin-top: 0;
 }
 
-.header {
-  background-color: black;
-  position: fixed;
-  float: left;
+.container .box {
+  position: absolute;
   width: 100%;
-  height: 100px;
-  z-index: 1;
-  }
-
-.headerbelow {
-  clear: left;
-  float: left;
-  width: 100%;
-  height: 100px;
+  height: 1500px;
+  background-color: white;
+  margin: 0 auto;
+  -webkit-animation-name: hideit;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-delay: 10s;
+  -webkit-animation-iteration-count: 5;
+  -webkit-animation-fill-mode: forwards;
 }
 
-  .logo-img{
-    float: right;
-    position: relative;
-    margin: 10px 15px 15px 10px;
+@-webkit-keyframes hideit {
+  0% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.angry-animate{
+-webkit-animation:bounce-in 5s ease 0s 1 normal;
+-moz-animation:bounce-in 5s ease 0s 1 normal;
+-ms-animation:bounce-in 5s ease 0s 1 normal;
+animation:bounce-in 5s ease 0s 1 normal;
+background-color: #24c6e3;
+position: absolute;
+left: 30%;
+top: 10%;
+transform: translate(-50%, -50%);
+width: 400px;
+height: 300px;
+border-radius:50px;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+}
+
+@-webkit-keyframes bounce-in {
+0%{ opacity: 0; -webkit-transform: scale(.3); transform: scale(.3); }
+50%{ opacity: 1; -webkit-transform: scale(1.0); transform: scale(1.0); }
+70%{ -webkit-transform: scale(0.9); transform: scale(0.9); }
+100%{ -webkit-transform: scale(1); transform: scale(1); }
+}
+
+@keyframes bounce-in {
+0%{ opacity: 0; transform: scale(.3); }
+50%{ opacity: 1; transform: scale(1.0); }
+70%{ transform: scale(0.9); }
+100%{ transform: scale(1); }
+}
+
+.image {
+  padding: 20px;
+}
+
+.header {
+  background-color:  #24c6e3;;
   }
 
-.ordersMain {
-  border:20px solid;
-  border-color: #24c6e3;
-  background-color: #24c6e3;
-  clear: left;
-  float: left;
-  width: 100%;
-  height: 350px;
-  }
+.outorder {
+border:20px solid;
+border-color: #24c6e3;
+background-color: #24c6e3;
+}
 
-  .orders {
+.orders {
   border:2px solid;
   border-color: black;
   background-color: #e0e0eb;
 }
 
-  .formMain {
-    background-color: blue;
-    clear: left;
-    float:middle;
-    width: 25%;
-    height: 500px;
-    }
-
-    .form {
+.form {
   border:2px solid;
-  float:left;
   margin: 0 .5% 0 2%;
-  border-color: white;
-  background-color: #24c6e3;
+  border-color: black;
+  background-color: #e0e0eb;
   padding: 2%;
 }
+.window {
+  border:2px solid;
+  border-color: white;
+  background-color: #24c6e3;
+}
 
-    .map {
-      width: 60%;
-      height: 400px;
-      float:right;
-      }
+.window2 {
+  background-color: #24c6e3;
+}
+
+.lower {
+  background-color: #24c6e3;
+  }
+
+  iframe {
+  resize: both;
+  overflow: auto;
+}
 
 </style>
 
 </head>
-
 <body>
-
-<div class="header">
-  <img class="logo-img" src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif"
-  height="80" ALT="Mullens" ALIGN=CENTER>
-  </div>
-
-  <div class="headerbelow">
+  <div class="outer-menu">
+    <input class="checkbox-toggle" type="checkbox" />
+    <div class="hamburger">
+      <div></div>
     </div>
-
-<div class="ordersMain">
-  <div class="orders" align="center" style="width: 100%; height: 250px; float:middle;">
-    <table id= "results" border="1" style="width: 100%">
-    <tr>
-    <th style="width:20%">Phone Number</th>
-    <th style="width:20%">Address</th>
-    <th style="width:20%">Price</th>
-    <th style="width:20%">Time</th>
-    </tr>
-    </table>
-  </div>
-  </div>
-
-  <div class="formMain">
-    <div class="form">
-      Phone Number:<br>
-      <input type="text" id="phone" /><br>
-      Address: <br>
-      <input type="text" id="address" /><br>
-      Price: <br>
-      <input type="text" id="price" /><br>
-      Time: <br>
-      <input type="text" id="time" /><br>
-      <input type="button" id ="display" value="Display" onclick="addRow()" /><br>
-    </div>
-    </div>
-
-    <div class="map">
-      <iframe src="https://glympse.com/01Q9-0N7D?utm_source=here-invite&utm_medium=email&utm_content=url-invite-main-wide&utm_campaign=invite" id="frame" width="100%" height="100%" title="Map"></iframe>
-      <input type="text" id="box" value="Enter glympse code" />
-      <button onClick="goTo();">go</button>
+    <div class="menu">
+      <div>
+        <div>
+          <ul>
+            <li><img src="logo88.gif" alt="Mullens" style="width:400x;height:300px;"></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
       </div>
+    </div>
+  </div>
+  </body>
+  <div class="container" id="remove">
+  <div class="box"><div class="angry-animate"><img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:400x;height:300px;"></div>
+</div>
+</div>
+  <div class="header"  align="center" style="width: 100%; height: 120px; float:middle;">
+  <div class="image" align="right"> <img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:140px;height:100px;"></div>
+</div>
+</div>
+  <div class="outorder"  height: 350px; >
+   <div class="orders" align="center" style="width: 100%; height: 250px; float:middle;">
+  <table id= "results" border="1" style="width: 100%">
+  <tr>
+  <th style="width:20%">Phone Number</th>
+  <th style="width:20%">Address</th>
+  <th style="width:20%">Price</th>
+  <th style="width:20%">Time</th>
+  </tr>
+  </table>
+</div>
+</div>
+<div class="lower" align="center" style="width: 100%; height: 250px; float:middle;">
+<div class="form" align="center" style="width: 50%; float:middle;">
+  Phone Number:<br>
+  <input type="text" id="phone" /><br>
+  Address: <br>
+  <input type="text" id="address" /><br>
+  Price: <br>
+  <input type="text" id="price" /><br>
+  Time: <br>
+  <input type="text" id="time" /><br>
+  <input type="button" id ="display" value="Display" onclick="addRow()" /><br>
+</div>
+</div>
+<div class="window2" align="center" style="width: 100%; height: 950px; float:middle;">
+<iframe src="https://glympse.com/01Q9-0N7D?utm_source=here-invite&utm_medium=email&utm_content=url-invite-main-wide&utm_campaign=invite" id="frame" align="center" width="100%" height="500px" title="Map"></iframe>
+<br><input type="text" id="box" value="Enter glympse code" />
+<button onClick="goTo();">go</button>
+</div>
 
-      <script>
-          function goTo() {
-              var input = get("box").value,
-                  frame = get("frame");
 
-              if(input.match(/\bhttp(.)*/)) {
-                  frame.src = input;
-              } else {
-                  input = "https://glympse.com/" + input;
-                  frame.src = input;
-              }
-          }
 
-          function get(id) {
-              return document.getElementById(id);
-          }
-      </script>
+<script>
+    function goTo() {
+        var input = get("box").value,
+            frame = get("frame");
 
-      <script type="text/javascript">
+        if(input.match(/\bhttp(.)*/)) {
+            frame.src = input;
+        } else {
+            input = "https://glympse.com/" + input;
+            frame.src = input;
+        }
+    }
 
-      ray.updateText('time',1);
-      </script>
+    function get(id) {
+        return document.getElementById(id);
+    }
+</script>
 
-      <script >
+<script type="text/javascript">
 
+ray.updateText('time',1);
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="remove.js"></script>
 </body>
+</html>
