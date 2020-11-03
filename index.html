@@ -87,7 +87,7 @@ margin-top: 0;
 -moz-animation:bounce-in 5s ease 0s 1 normal;
 -ms-animation:bounce-in 5s ease 0s 1 normal;
 animation:bounce-in 5s ease 0s 1 normal;
-background-color: #24c6e3;
+background-color: white;
 position: absolute;
 left: 30%;
 top: 10%;
@@ -115,6 +115,18 @@ border-radius:50px;
 
 .image {
   padding: 20px;
+  display: inline-block;
+  font-size:25px;
+}
+
+.image2 {
+  padding-top: 0px;
+  padding-left: 170px;
+    padding-right: 20px;
+  padding-bottom: : 50px;
+  display: inline-block;
+  font-size:25px;
+  font-weight: bold;
 }
 
 .header {
@@ -136,9 +148,12 @@ background-color: #24c6e3;
 .form {
   border:2px solid;
   margin: 0 .5% 0 2%;
-  border-color: black;
-  background-color: #e0e0eb;
+  border-color: white;
+  background-color: #24c6e3;
   padding: 2%;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left
 }
 .window {
   border:2px solid;
@@ -169,6 +184,19 @@ background-color: #24c6e3;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .button1 {
@@ -209,10 +237,12 @@ position: fixed;
       <div>
         <div>
           <ul>
-            <li><img src="logo88.gif" alt="Mullens" style="width:400x;height:300px;"></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><button onclick="makeFullScreen()">Make Full Screen</button></li>
+            <li><img src="logo88.gif" alt="Mullens" style="width:360x;height:270px;"></li>
+          <li><button onclick="makeFullScreen()" class="button">Full Screen Map</button></li>
+          <li><button onclick="exitFullScreen()" class="button">Return Home</button></li>
+            <li><input type="text" id="box" value="Enter glympse code" style="font-size: 18pt; height: 60px; width:300px;"/>
+              <button onclick="someFunc();" class="button">Apply</button></li>
+
           </ul>
         </div>
       </div>
@@ -220,11 +250,15 @@ position: fixed;
   </div>
 
   <div class="container" id="remove">
-  <div class="box"><div class="angry-animate"><img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:400x;height:300px;"></div>
+  <div class="box"><div class="angry-animate"><img src="logo88.gif" alt="Mullens" style="width:400x;height:300px;"></div>
 </div>
 </div>
   <div class="header"  align="center" style="width: 100%; height: 120px; float:middle;">
-  <div class="image" align="right"> <img src="http://mullens.ie/wp-content/uploads/2016/09/logo_small2.gif" alt="Mullens" style="width:140px;height:100px;"></div>
+    <div id="clockbox" class="image2" align="left" style="width: 33%;">
+</div>
+    <div class="image" align="middle" style="width: 33%;"> <img src="logo88.gif" alt="Mullens" style="width:140px;height:100px;"></div>
+
+      <div class="image" align="right" style="width: 33%;"</div>
 </div>
 </div>
   <div class="outorder"  height: 350px; >
@@ -239,30 +273,29 @@ position: fixed;
   </table>
 </div>
 </div>
-<div class="lower" align="center" style="width: 100%; height: 300px; float:middle;">
+<div class="lower" align="center" style="width: 100%; height: 425px; float:middle;">
 <div class="form" align="center" style="width: 50%; float:middle;">
-  Phone Number:<br>
-  <input type="text" id="phone" /><br>
-  Address: <br>
-  <input type="text" id="address" /><br>
-  Price: <br>
-  <input type="text" id="price" /><br>
-  Time: <br>
-  <input type="text" id="time" /><br>
-  <input type="button" id ="display" value="Display" onclick="addRow()" />
+  <form>
+    <table>
+<tr>
+  <td align="left">Phone #:</td>
+  <td align="right"><input type="text" id="phone"style="font-size: 18pt; height: 55px; width:300px;" /><br></td></tr>
+  <td align="left">Address:</td>
+  <td align="right"><input type="text" id="address" style="font-size: 18pt; height: 55px; width:300px;" /><br></td></tr>
+  <td align="left">Price:</td>
+  <td align="right"><input type="text" id="price" style="font-size: 18pt; height: 55px; width:300px;" /><br></td></tr>
+  <td align="left">Time:</td>
+  <td align="right"><input type="text" id="time" style="font-size: 18pt; height: 55px; width:300px;" /><br></td></tr>
+  <td align="left"><input type="button" id ="display" value="Display" onclick="addRow()" /></td>
+</tr>
+</table>
+</form>
 </div>
 </div>
 <div class="window2" align="center" style="width: 100%; height: 500px; float:middle;">
 <iframe src="https://glympse.com/01Q9-0N7D?utm_source=here-invite&utm_medium=email&utm_content=url-invite-main-wide&utm_campaign=invite" id="frame" align="center" title="Map"></iframe>
-<br><button onclick="makeFullScreen()">Make Full Screen</button>
-<br><button onclick="exitFullScreen()">Exit Full Screen</button>
 </div>
-
-  <div class="button1" onclick="makeFullScreen()" style="cursor: pointer;"><h1 class="text">Maps</h1>
-  </div>
-
-  <div class="button2" onclick="exitFullScreen()" style="cursor: pointer;"><h1 class="text">Exit</h1>
-  </div>
+<div><input type="text" style="font-size: 18pt; height: 40px; width:280px; "></div>
 
 
 
@@ -301,6 +334,45 @@ function exitFullScreen() {
 <script type="text/javascript">
 
 ray.updateText('time',1);
+</script>
+
+<script type="text/javascript">
+tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear(),nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+     if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nyear<1000) nyear+=1900;
+if(nmin<=9) nmin="0"+nmin;
+if(nsec<=9) nsec="0"+nsec;
+
+document.getElementById('clockbox').innerHTML=""+tday[nday]+"<br> "+tmonth[nmonth]+" "+ndate+"<br> "+nhour+":"+nmin+":"+nsec+ap+"";
+}
+
+window.onload=function(){
+GetClock();
+setInterval(GetClock,1000);
+}
+</script>
+
+<script>
+function myFunction2() {
+  alert("Code updated!");
+}
+</script>
+
+<script>
+function someFunc() {
+    myFunction2();
+    goTo();
+}
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
